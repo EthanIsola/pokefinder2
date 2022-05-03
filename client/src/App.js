@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import PokePage from './components/PokePage';
+import NavBar from './components/NavBar';
+
+import {useEffect, useState} from 'react'
+import { Route, Switch } from "react-router-dom";
 
 function App() {
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) =>r.json()).then((r) => {
+      console.log(r)
+      if (r !== undefined && r!== null) {
+        setUser(r.id)
+      }
+    });
+  }, []);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <h1 className='title'>Pokefinder</h1>
+        <NavBar/>
+      </div>
+        <Switch>
+          <Route path = "/">
+            <PokePage />
+          </Route>
+        </Switch>
     </div>
   );
 }
+
 
 export default App;
