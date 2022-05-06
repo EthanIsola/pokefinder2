@@ -1,12 +1,11 @@
 
 import { useState } from "react";
-function Login({setUser, user}) {
-    const [userName, setUserName] = useState("");
+function Login({setUser, user, displayName, setDisplayName}) {
+    const [userName, setUserName] = useState("")
     const [myPassword, setPassword] = useState("");
     const [my_confirm, setConfirm] = useState("");
     const [option, setOption] = useState("login")
     const [display, setOptionDisplay] = useState(false)
-    const [displayName, setDiplayName] = useState(null)
     
     function handleLogout() {
         fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -57,7 +56,7 @@ function Login({setUser, user}) {
       .then((r) => {
                 if(r.errors === undefined){
                   setUser(r.id)
-                  setDiplayName(r.username)
+                  setDisplayName(r.username)
               }})}
       else if (option === "sign up" && myPassword !== my_confirm) {
         alert("Passwords Don't Match")
@@ -77,7 +76,7 @@ function Login({setUser, user}) {
               .then((r) => {
                 if(r.errors === undefined){
                   setUser(r.id)
-                  setDiplayName(r.username)
+                  setDisplayName(r.username)
                 }
                 else{
                   alert("Invalid Login Info")

@@ -9,9 +9,38 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: aqua;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+    
+}
+
+.pokeCard{
+  position: relative;
+  width: fit-content;
+  margin: auto;
+  padding: 10px;
+  display: inline-flex;
+}
+
+#firstContainer{
+  border:solid black 10px;
+  padding: 2%;
+  width: 180px;
+  margin-right: 10px;
+  border-radius: 10%;
+  background-color: rgb(240, 238, 234);
+}
+
+#secondContainer{
+  border:solid black 1px;
+  padding-top: 30px;
+  margin-left: 10px;
+  padding: 10%;
+  width: 180px;
+  background-color: white;
 }

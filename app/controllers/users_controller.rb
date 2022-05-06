@@ -10,8 +10,13 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = User.find_by(id: session[:user_id])
+        user = User.find(session[:user_id])
         render json: user
+    end
+
+    def show_favs
+        user = User.find(session[:user_id])
+        render json: user.favorites
     end
 
     private

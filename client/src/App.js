@@ -7,13 +7,14 @@ import { Route, Switch } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState(null)
+  const [displayName, setDisplayName] = useState(null)
 
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) =>r.json()).then((r) => {
-      console.log(r)
       if (r !== undefined && r!== null) {
         setUser(r.id)
+        setDisplayName(r.username)
       }
     });
   }, []);
@@ -26,7 +27,7 @@ function App() {
       </div>
         <Switch>
           <Route path = "/login">
-            <Login setUser={setUser} user={user}/>
+            <Login setUser={setUser} user={user} displayName={displayName} setDisplayName={setDisplayName}/>
           </Route>
           <Route path = "/">
             <PokePage />
