@@ -8,6 +8,7 @@ import { Route, Switch } from "react-router-dom";
 function App() {
   const [user, setUser] = useState(null)
   const [displayName, setDisplayName] = useState(null)
+  const [favs, setFavs] = useState(null)
 
   useEffect(() => {
     // auto-login
@@ -18,6 +19,15 @@ function App() {
       }
     });
   }, []);
+
+  useEffect(()=>{
+    if(user!==null && user!==undefined)
+    {
+    fetch(`/favs?id=${user}`)
+    .then(r=>r.json())
+    .then(data=>setFavs(data))
+    }
+  },[user])
   
   return (
     <div className="App">
@@ -30,7 +40,7 @@ function App() {
             <Login setUser={setUser} user={user} displayName={displayName} setDisplayName={setDisplayName}/>
           </Route>
           <Route path = "/">
-            <PokePage />
+            <PokePage favs={favs} user={user} setFavs={setFavs}/>
           </Route>
         </Switch>
     </div>

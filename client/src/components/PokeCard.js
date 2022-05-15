@@ -1,9 +1,63 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-function PokeCard({pok}){
-    useEffect(()=>{console.log(pok);},[])
+function PokeCard({pok, favs, user, setFavs}){
+
+    const [star, setStar] = useState(null)
+
+    //sets the star based on inclusion in the favorites list
+    useEffect(()=>{
+        checkIncluded(pok.name)?setStar(`⭐`):setStar(`✰`)
+        console.log(favs)
+    },[pok, favs])
+
+    //used to check if the pokemon is currently listed in favorites
+    function checkIncluded(pokemon){
+        if(favs!==null){
+            for(let i=0;i<favs.length;i++){
+                if(favs[i].name===pokemon){
+                    return true
+                }
+            }
+            return false
+        }
+    }
+
+    function addFav(){
+        let formData={
+            name: pok.name,
+            user_id: user
+        }
+        fetch("/favorite", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+        .then(r=>r.json())
+        .then(r=>setFavs(r))
+        setStar(`✰`)
+    }
+
+    function delFav(){
+        let formData={
+            name: pok.name,
+            user_id: user
+        }
+        fetch("/favs", {
+            method: "DELETE",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+      })
+      console.log("removed")
+      setStar('⭐')
+    }
+
     return(
         <div className="pokeCard">
+            <button value={star} onClick={(e)=>{e.target.value==='✰'?delFav():addFav()}}>{star}</button>
             <div id="firstContainer">
                 <h1>{pok.name[0].toUpperCase()+pok.name.slice(1)}</h1>
                 <img src={pok.sprites["front_default"]} alt="pokeimg"/>
