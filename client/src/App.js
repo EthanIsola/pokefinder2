@@ -4,6 +4,7 @@ import Login from './components/Login';
 
 import {useEffect, useState} from 'react'
 import { Route, Switch } from "react-router-dom";
+import FavPag from './components/FavPage';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -38,6 +39,9 @@ function App() {
         <Switch>
           <Route path = "/login">
             <Login setUser={setUser} user={user} displayName={displayName} setDisplayName={setDisplayName}/>
+          </Route>
+          <Route path = "/favs">
+            <FavPag favs={favs} user={user} setFavs={setFavs}/>
           </Route>
           <Route path = "/">
             <PokePage favs={favs} user={user} setFavs={setFavs}/>

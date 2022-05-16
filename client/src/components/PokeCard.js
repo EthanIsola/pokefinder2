@@ -7,8 +7,9 @@ function PokeCard({pok, favs, user, setFavs}){
     //sets the star based on inclusion in the favorites list
     useEffect(()=>{
         checkIncluded(pok.name)?setStar(`⭐`):setStar(`✰`)
-        console.log(favs)
-    },[pok, favs])
+    },[pok])
+
+    
 
     //used to check if the pokemon is currently listed in favorites
     function checkIncluded(pokemon){
@@ -19,6 +20,21 @@ function PokeCard({pok, favs, user, setFavs}){
                 }
             }
             return false
+        }
+    }
+
+    //finds the index of the pokemon in favs
+    function findName(){
+        let myIndex = favs.map(e=>{return e.name}).indexOf(pok.name)
+        return myIndex
+    }
+
+    function createFavs(){
+        if (star==='⭐'){
+            delFav(pok.name)
+        }
+        else{
+            addFav(pok.name)
         }
     }
 
@@ -35,8 +51,8 @@ function PokeCard({pok, favs, user, setFavs}){
             body: JSON.stringify(formData),
         })
         .then(r=>r.json())
-        .then(r=>setFavs(r))
-        setStar(`✰`)
+        .then(setStar(`⭐`))
+        setFavs((favs)=>[...favs, {name: pok.name}])
     }
 
     function delFav(){
@@ -51,14 +67,17 @@ function PokeCard({pok, favs, user, setFavs}){
             },
             body: JSON.stringify(formData),
       })
-      console.log("removed")
-      setStar('⭐')
+      .then(r=>r.json())
+      .then(setStar('✰'))
+      let myFavs = favs.filter((pokemon)=>{
+          return pokemon.name!==pok.name})
+      setFavs(myFavs)
     }
 
     return(
         <div className="pokeCard">
-            <button value={star} onClick={(e)=>{e.target.value==='✰'?delFav():addFav()}}>{star}</button>
             <div id="firstContainer">
+                <p className="starButton" onClick={createFavs}>{star}</p>
                 <h1>{pok.name[0].toUpperCase()+pok.name.slice(1)}</h1>
                 <img src={pok.sprites["front_default"]} alt="pokeimg"/>
             </div>

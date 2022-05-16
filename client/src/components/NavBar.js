@@ -7,6 +7,7 @@ function NavBar() {
     <nav>
       <NavLink className = "navlink" exact to="/">Home</NavLink>
       <NavLink className = "navlink" to="/login">Login</NavLink>
+      <NavLink className = "navlink" to="/favs">Favorites</NavLink>
     </nav> 
   </div>)
 }

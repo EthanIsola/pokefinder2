@@ -19,6 +19,10 @@ code {
     
 }
 
+.title{
+  font-family: 'Pokemon Solid', sans-serif;
+}
+
 .pokeCard{
   position: relative;
   width: fit-content;
@@ -43,4 +47,26 @@ code {
   padding: 10%;
   width: 180px;
   background-color: white;
+}
+
+.starButton{
+  text-align: right;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+.navbar{
+  background-color: red;
+  max-width: fit-content;
+  margin: auto;
+}
+
+.navlink{
+  color: white;
+  text-decoration: none;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: .8px;
+  padding-bottom: .8px;
+  border: solid white 1px;
 }
