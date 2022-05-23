@@ -11,7 +11,7 @@ function FavPag({favs, user, setFavs}){
     },[])
 
     return(
-    <div>
+    <div className="favsHolder">
         {data}
     </div>
     )

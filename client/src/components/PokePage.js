@@ -26,8 +26,8 @@ function PokePage({favs, user, setFavs}){
         <div>
             <div>
                 <input placeholder="Pokemon Name" value={pokeName} onChange={handleChange}/>
+                <button onClick={()=>pokeSearch(pokeName)}>🔍</button>
             </div>
-            <button onClick={()=>pokeSearch(pokeName)}>🔍</button>
             <br/>
             {displayCard}
         </div>

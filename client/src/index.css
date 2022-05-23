@@ -9,8 +9,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: aqua;
-
+  background-image: url('https://i.pinimg.com/originals/ab/58/cc/ab58cc75dcb2e42555cf7e614216350a.jpg');
+  background-repeat:repeat-y;
+  background-size:80%;
+  background-position:top;
+  background-color: rgb(248, 250, 110);
 }
 
 code {
@@ -21,14 +24,19 @@ code {
 
 .title{
   font-family: 'Pokemon Solid', sans-serif;
+  font-size: 40px;
+  margin-top: 1px;
+  letter-spacing: 2px;
+  color: rgb(253, 216, 49);
+  -webkit-text-stroke: 1px black;
 }
 
 .pokeCard{
-  position: relative;
-  width: fit-content;
-  margin: auto;
+  /* position: relative; */
+  width: 400px;
   padding: 10px;
   display: inline-flex;
+  height: 250px;
 }
 
 #firstContainer{
@@ -38,6 +46,8 @@ code {
   margin-right: 10px;
   border-radius: 10%;
   background-color: rgb(240, 238, 234);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
 }
 
 #secondContainer{
@@ -47,18 +57,22 @@ code {
   padding: 10%;
   width: 180px;
   background-color: white;
+  font-family: 'Quantico', cursive;
+  font-size: 15px;
 }
 
 .starButton{
   text-align: right;
   margin-top: 0%;
   margin-bottom: 0%;
+  font-size: 15px;
 }
 
 .navbar{
-  background-color: red;
+  background-color: rgb(253, 153, 59);
   max-width: fit-content;
   margin: auto;
+  margin-bottom: 2px;
 }
 
 .navlink{
@@ -68,5 +82,23 @@ code {
   padding-right: 80px;
   padding-top: .8px;
   padding-bottom: .8px;
-  border: solid white 1px;
+  border: solid rgb(161, 208, 254) 3px;
+}
+
+.favsHolder{
+  column-count: 2;
+  column-rule-style: solid;
+  column-rule-color: black;
+  column-width: 400px;
+  column-gap: 0px;
+}
+
+.loginPage{
+  margin: auto;
+  background-color: white;
+  width: 400px;
+  border: solid black 4px;
+  border-radius: 20%;
+  margin-top: 5px;
+  padding: 5px;
 }
